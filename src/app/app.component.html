@@ -6,6 +6,6 @@
         <button *ngIf="!config" (click)="config=true">Configurações</button>
         <button *ngIf="config" (click)="config=false">Voltar</button>
     </div>
-    <div *ngIf="config">Tela de Configurações</div>
-    <div *ngIf="!config">Cronometro</div>
+    <app-config *ngIf="config">Tela de Configurações</app-config>
+    <app-timer *ngIf="!config">Cronometro</app-timer>
 </div>
