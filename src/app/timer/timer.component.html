@@ -1,11 +1,11 @@
 <div [class]="'pashe'+ ts.phase">
     <div class="timeLeft">
         <!--USANDO PIPE-->
-        {{ts.timeLeft/10 | number:'1.1-1'}}
+        {{ts.timeLeft/1000 | number:'1.1-1'}}
     </div>
-    <div>Exercicio {{ts.currentEx +1}}/{{this.ts.exercises.length}}: {{this.ts.exercises[this.ts.currentEx].name}}
+    <div>Exercicio {{ts.currentEx +1}}/{{ts.exercises.length}}: {{ts.exercises[this.ts.currentEx].name}}
     </div>
-    <div> Repeticao {{ts.currentRep+1}}/{{this.ts.exercises[this.ts.currentEx].repetitions}}</div>
+    <div> Repeticao {{ts.currentRep+1}}/{{ts.exercises[ts.currentEx].repetitions}}</div>
     <div>{{formatPhase(ts.phase)}}</div>
 </div>
 

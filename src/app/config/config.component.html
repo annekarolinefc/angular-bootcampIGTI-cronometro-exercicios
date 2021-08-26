@@ -1,12 +1,12 @@
-<div>
+<form [formGroup]="exerciseForm" (ngSubmit)="add()">
     <div>Exercício:
-        <input [(ngModel)]="exercise.name" input type="string"></div>
-    <div>Duração: <input type="number" [(ngModel)]="exercise.duration"></div>
-    <div>Repetições: <input type="number" [(ngModel)]="exercise.repetitions"></div>
-    <div>Preparação: <input type="number" [(ngModel)]="exercise.preparation"></div>
-    <div>Descanso: <input type="number" [(ngModel)]="exercise.rest"></div>
-    <button (click)="add()">Adicionar</button>
-</div>
+        <input formControlName="name" input type="string"></div>
+    <div>Duração: <input type="number" formControlName="duration"></div>
+    <div>Repetições: <input type="number" formControlName="repetitions"></div>
+    <div>Preparação: <input type="number" formControlName="preparation"></div>
+    <div>Descanso: <input type="number" formControlName="rest"></div>
+    <button type="submit" [disabled]="exerciseForm.invalid">Adicionar</button>
+</form>
 
 <table>
     <tr>

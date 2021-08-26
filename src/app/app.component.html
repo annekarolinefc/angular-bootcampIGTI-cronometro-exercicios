@@ -1,11 +1,9 @@
-<h2>Desafio 2</h2>
-
 <div>
     <div class="right">
         <!--MUDANÇA DE ESTADO SIMPLES-->
         <button *ngIf="!config" (click)="config=true">Configurações</button>
         <button *ngIf="config" (click)="config=false">Voltar</button>
     </div>
-    <app-config *ngIf="config" [exercises]="exercises">Tela de Configurações</app-config>
+    <app-config *ngIf="config">Tela de Configurações</app-config>
     <app-timer *ngIf="!config">Cronometro</app-timer>
 </div>

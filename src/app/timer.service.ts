@@ -6,11 +6,10 @@ import { Exercise } from './exercise';
 })
 
 export class TimerService{
-
   //array de exercicios
   exercises: Exercise[]=[{
       name: 'Abdominal',
-      duration: 20,
+      duration: 30,
       repetitions: 3,
       preparation: 15,
       rest:20,
@@ -32,12 +31,12 @@ export class TimerService{
     this.timeLeft = this.getTimeOfCurrentPhase();
     }
 
-    decrementeTimeLeft(){
-      if(this.timeLeft > 0){
-        this.timeLeft++;
-    } else{
-      this.next()
-    }
+    decrementeTimeLeft(ellapsedTimeMs){
+      if(ellapsedTimeMs >=this.timeLeft){
+        this.next()
+      }else{
+        this.timeLeft = this.timeLeft - ellapsedTimeMs;
+      }
     }
 
   next(){
@@ -55,7 +54,7 @@ export class TimerService{
           this.currentRep=0;
           this.phase=0;
         }else{
-        console.log("olá");
+        return;
         //
         }
       }
@@ -66,9 +65,10 @@ export class TimerService{
   private getTimeOfCurrentPhase(){
     const ex = this.exercises[this.currentEx];
     switch(this.phase){
-      case 0: return ex.preparation*10;
-      case 1: return ex.duration*10;
-      case 2: return ex.rest*10;
+      case 0: return ex.preparation*1000;
+      case 1: return ex.duration*1000;
+      case 2: return ex.rest*1000;
+      default: return 0;
     }
   }
 

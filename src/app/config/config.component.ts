@@ -1,7 +1,6 @@
 import { TimerService } from './../timer.service';
-import { Component, Input  } from '@angular/core';
-import { Exercise } from '../exercise';
-
+import { Component  } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-config',
@@ -11,18 +10,20 @@ import { Exercise } from '../exercise';
 export class ConfigComponent {
 
   /**Padrão: A configuração é um array de exercicíos */
-  exercise: Exercise ={
-    name: "",
-    duration: 30,
-    repetitions: 3,
-    preparation: 15,
-    rest: 30,
-  }
+  exerciseForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    duration: new FormControl(30, Validators.required),
+    repetition: new FormControl(3, Validators.required),
+    preparation: new FormControl(15, Validators.required),
+    rest: new FormControl(30, Validators.required),
+  });
+
   constructor(public ts: TimerService) { }
 
   add(){
-    this.ts.add(this.exercise);
-    this.exercise = {...this.exercise, name: ''}
+    const exercise = this.exerciseForm.value
+    this.ts.add(exercise);
+    this.exerciseForm.reset({...exercise, name: ''});
   }
 
   delete(i:number){

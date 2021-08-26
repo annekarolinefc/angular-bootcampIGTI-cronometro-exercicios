@@ -14,7 +14,7 @@ interval: number;
 constructor(public ts: TimerService){//INJETANDO O SERVIÇO
 
 }
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.pause();
   }
 
@@ -27,19 +27,24 @@ formatPhase(phase: number){
     case 0: return "Preparação";
     case 1: return "Exercício";
     case 2: return "Descanso";
-  }
+    default: return 'erro';
+  };
 }
 
 start(){
   if(!this.interval){
+    let lastTime = Date.now();
     this.interval = window.setInterval(()=>{
-      this.ts.decrementeTimeLeft()
+      let currentTime = Date.now();
+      let ellapsedTime = currentTime - lastTime;
+      lastTime = currentTime;
+      this.ts.decrementeTimeLeft(ellapsedTime);
     }, 100);
   }
 }
 
 pause(){
-  if(!this.interval){
+  if(this.interval){
     clearInterval(this.interval);
     this.interval = undefined;
   }

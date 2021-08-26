@@ -1,10 +1,14 @@
 :host {
-    text-align: center;
     display: block;
+    text-align: center;
 }
 
 .timeLeft {
     font-size: 2rem;
+}
+
+div~div {
+    margin-left: 4px
 }
 
 
@@ -12,10 +16,6 @@
 
 button~button {
     margin-left: 2px;
-}
-
-div~div {
-    margin-left: 4px
 }
 
 .phase0 {
