@@ -1,0 +1,31 @@
+:host {
+    text-align: center;
+    display: block;
+}
+
+.timeLeft {
+    font-size: 2rem;
+}
+
+
+/** Um botão, depois de outro botão*/
+
+button~button {
+    margin-left: 2px;
+}
+
+div~div {
+    margin-left: 4px
+}
+
+.phase0 {
+    color: blueviolet;
+}
+
+.phase1 {
+    color: green;
+}
+
+.phase2 {
+    color: rgb(94, 94, 8);
+}
